@@ -1,0 +1,216 @@
+{% extends "base.html" %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="dropmenu.css">
+<style type="text/css" media="screen">
+#header {
+    /*position: relative;
+    top: 2em;
+    right: 0;
+    left: 0;
+    height: 2em;
+    z-index:1;
+    background: #111;
+    padding-top: 5px;
+    padding-left: 5px;*/
+}
+#editor { 
+    /*position: relative;
+    top: 3em;
+    right: 0;
+    left: 0;*/
+    width: 100%;
+    height: 15em;
+    border-top: 10px solid #ace;
+    font-size: 1.5em;
+}
+.button{cursor:pointer}
+.button:hover{text-decoration:none !important}
+
+.select select {
+    padding:3px;
+    margin: 0;
+    -webkit-border-radius:2px;
+       -moz-border-radius:2px;
+            border-radius:2px;
+    background: #333;
+    color:#eee;
+    border:none;
+    outline:none;
+    -webkit-appearance:none;
+       -moz-appearance:none;
+            appearance:none;
+    cursor:pointer;
+}
+
+/* Targetting Webkit browsers only. FF will show the dropdown arrow with so much padding. */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .select select {padding-right:18px}
+}
+
+.select {position:relative;background:transparent}
+.select:after {
+    content:'>';
+    font:16px "Consolas", monospace;
+    color:#bbb;
+    -webkit-transform:rotate(90deg);
+       -moz-transform:rotate(90deg);
+        -ms-transform:rotate(90deg);
+            transform:rotate(90deg);
+    right:8px; top:0px;
+    border-bottom:0px solid #ddd;
+    position:absolute;
+    pointer-events:none;
+}
+.select:before {
+    content:'';
+    right:0; top:0;
+    width:21px; height:100%;
+    background:#333;
+    position:absolute;
+    pointer-events:none;
+    display:block;
+}
+
+</style>{% block head2 %}{% endblock %}
+{% endblock %}
+{% block container %}
+<h1>Message Generator</h1>
+<div id="header"><ul class="nav">
+<li><label class="select"><select onchange="setKeybinding(this.options[this.selectedIndex].value)">
+    <option disabled>Editor</option>
+    <option value="ace" selected>ACE</option>
+    <option value="emacs">Emacs</option>
+    <option value="vim">Vi</option>
+</select></label></li>
+<li><label class="select"><select onchange="setTheme(this.options[this.selectedIndex].value)">
+    <option disabled>Theme</option>
+    <optgroup label="Dark">
+        <option value="ambiance">Ambiance</option>
+        <option value="chaos">Chaos</option>
+        <option value="clouds_midnight">Clouds midnight</option>
+        <option value="cobalt">Cobalt</option>
+        <option value="idle_fingers" class="bold">idleFingers</option>
+        <option value="kr_theme">krTheme</option>
+        <option value="merbivore">Merbivore</option>
+        <option value="merbivore_soft">Merbivore soft</option>
+        <option value="mono_industrial">Mono Industrial</option>
+        <option value="monokai"  class="bold" selected>Monokai</option>
+        <option value="pastel_on_dark">Pastel on dark</option>
+        <option value="solarized_dark">Solarized Dark</option>
+        <option value="terminal">Terminal</option>
+        <option value="tomorrow_night">Tomorrow Night</option>
+        <option value="tomorrow_night_blue">Tomorrow Night Blue</option>
+        <option value="tomorrow_night_bright">Tomorrow Night Bright</option>
+        <option value="tomorrow_night_eighties">Tomorrow Night 80s</option>
+        <option value="vibrant_ink">Vibrant Ink</option>
+    </optgroup>
+    <optgroup label="Bright">
+        <option value="chrome">Chrome</option>
+        <option value="clouds">Clouds</option>
+        <option value="crimson_editor">Crimson Editor</option>
+        <option value="dawn">Dawn</option>
+        <option value="dreamweaver">Dreamweaver</option>
+        <option value="eclipse" class="bold">Eclipse</option>
+        <option value="github">GitHub</option>
+        <option value="solarized_light">Solarized Light</option>
+        <option value="textmate">TextMate</option>
+        <option value="tomorrow">Tomorrow</option>
+        <option value="xcode">XCode</option>
+    </optgroup>
+</select></label></li>
+<li><label class="select"><select onchange="setLanguage(this.options[this.selectedIndex].value)">
+    <option disabled>Language</option>
+    
+    <optgroup label="Common">
+        <option value="python">Python</option>
+        <option value="java">Java</option>
+        <option value="html">HTML</option>
+        <option value="css">CSS</option>
+        <option value="javascript">Javascript</option>
+        <option value="c_cpp">C/C++</option>
+        <option value="plain_text" selected>Plain Text</option>
+    </optgroup>
+    <option value="actionscript">ActionScript</option>
+    <option value="assembly_x86">Assembly (x86)</option>
+    <option value="batchfile">Bat</option>
+    <option value="c_cpp">C/C++</option>
+    <option value="cobol">Cobol</option>
+    <option value="coffee">Coffee</option>
+    <option value="coldfusion">ColdFusion</option>
+    <option value="csharp">C#</option>
+    <option value="css">CSS</option>
+    <option value="dart">Dart</option>
+    <option value="django">Django</option>
+    <option value="haskell">Haskell</option>
+    <option value="html">HTML</option>
+    <option value="html_ruby">HTML Ruby</option>
+    <option value="ini">ini</option>
+    <option value="java">Java</option>
+    <option value="javascript">Javascript</option>
+    <option value="latex">LaTeX</option>
+    <option value="lisp">Lisp</option>
+    <option value="makefile">MakeFile</option>
+    <option value="matlab">MATLAB</option>
+    <option value="mysql">MySQL</option>
+    <option value="objectivec">Objective-C</option>
+    <option value="pascal">Pascal</option>
+    <option value="perl">Perl</option>
+    <option value="pgsql">PGSQL</option>
+    <option value="php">PHP</option>
+    <option value="plain_text">Plain Text</option>
+    <option value="powershell">PowerShell</option>
+    <option value="python">Python</option>
+    <option value="r">R</option>
+    <option value="rhtml">RHTML</option>
+    <option value="ruby">Ruby</option>
+    <option value="scala">Scala</option>
+    <option value="sql">SQL</option>
+    <option value="svg">SVG</option>
+    <option value="tex">TeX</option>
+    <option value="vbscript">VB Script</option>
+    <option value="xml">XML</option>
+    <option value="yaml">YAML</option>
+</select></label></li>
+<li><a class="button" onclick="save()">Create URL</a></li></ul></div>
+<div id="editor">This is where you can put your message</div>
+{% block form %}<form method="post" name="messenger" action="/m"><input type="hidden" name="message"/></form>{% endblock %}
+{% endblock %}
+{% block script %}
+<script src="/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    ///*
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/monokai");
+    //editor.getSession().setMode("ace/mode/javascript");
+    //editor.setKeyboardHandler("ace/keyboard/vim");
+    editor.getSession().setUseWrapMode(true);
+    editor.selectAll()
+    editor.focus()
+    
+    var keybindings = {'ace':'','emacs':'ace/keyboard/emacs','vim':'ace/keyboard/vim'}
+    
+    function setKeybinding(type) {
+        editor.setKeyboardHandler(keybindings[type])
+        editor.focus()
+    }
+    
+    function setTheme(theme) {
+        editor.setTheme("ace/theme/"+theme);
+    }
+    
+    function setLanguage(language) {
+        if (language == "plain_text") {
+            editor.getSession().setMode("");
+        } else {
+            editor.getSession().setMode("ace/mode/"+language);
+        }
+    }
+    
+    function save() {
+        messenger.message.value = editor.getValue();
+        messenger.submit();
+    }
+    //*/
+</script>
+{% block script2 %}{% endblock %}
+{% endblock %}

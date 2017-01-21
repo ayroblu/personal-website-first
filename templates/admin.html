@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block head %}
+<style>
+.pages td,.pages th{padding:1px 6px}
+.np td{width:5em}
+.np a{
+	display:block;
+	text-decoration:none;
+	background:#444;
+	text-align:center
+}
+.np a:hover{background:#222}
+</style>
+{% endblock %}
+
+{% block container %}
+<h1>Welcome to the admin page</h1>
+<p>I want to make a content management system such that I can control what appears on this page</p>
+<p>So take all of this, put it in a TextProperty.</p>
+{% if pages %}
+<table class="np"><td>{% if previous >= 0 %}<a href="/admin?s={{previous}}">previous</a>{% endif %}</td><td>{% if next >= 0 %}<a href="/admin?s={{next}}">next</a>{% endif %}</td></table>
+<table class="pages"><tr><th>Editor</th><th>View Page</th></tr>
+{% for page in pages %}<tr><td><a href="/admin?e={{page.name}}">{{page.name}}</a></td><td><a href="/admin?p={{page.name}}">{{page.name}}</a></td></tr>
+{% endfor %}</table>
+{% else %}
+<p>No logs found</p>
+{% endif %}
+<!--<p><a href="/admin?e=test">Edit Test</a>...<a href="/admin?p=test">Open Test</a></p>-->
+{% endblock %}

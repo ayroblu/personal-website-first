@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ben Lu - UoA Engineering Science</title>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0;" />
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+	<link href="//fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic"
+    rel="stylesheet" title="roboto">
+    <link href="/stylesheet.css" rel="stylesheet" type="text/css" />
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <div class="container">
+	<div class="links">
+    <a class="link" href="/home">Home</a>
+	<a class="link" href="/vi">vi</a>
+	<a class="link" href="/emacs">emacs</a>
+	<a class="link" href="/lyrics">lyrics</a>
+	<a class="link" href="/ip">IP</a>
+	<a class="link" href="/about">About</a>
+	<h2 class="hitcount">{{ general_total }}</h2>
+	</div>
+	
+	<img src="/moon.jpg" id="full-screen-background-image">
+	<div class="background"></div>
+    {% block container %}{% endblock %}
+    </div>
+<script>
+window.onload = function() {
+    //var uagent = navigator.userAgent.toLowerCase();
+    //if (uagent.search('mobile') > -1) {
+    //    var links = document.getElementsByClassName('link');
+    //    for (var i = 0; i < links.length; ++i) {
+    //        links[i].style.paddingLeft = 7+"px";
+    //        links[i].style.paddingRight = 7+"px";
+    //    }
+    //}
+}</script>
+{% block script %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,343 @@
+{% extends "base.html" %}
+{% block container %}
+<h1>Emacs Commands List</h1>
+
+<table><tr><td><ul>
+<li><a href="#basics">Basics</a></li>
+<li><a href="#basicmov">Basic movement</a></li>
+<li><a href="#editing">Editing</a></li>
+<li><a href="#important">Important</a></li>
+<li><a href="#onlinehelp">Online-Help</a></li>
+<li><a href="#sr">Search/Replace</a></li>
+<li><a href="#srre">Search/Replace with regular expressions</a></li>
+<li><a href="#wc">Window-Commands</a></li>
+<li><a href="#bc">Bookmark commands</a></li>
+</ul></td><td><ul>
+<li><a href="#shell">Shell</a></li>
+<li><a href="#dired">DIRectory EDitor (dired)</a></li>
+<li><a href="#maybe">Maybe</a></li>
+<li><a href="#telnet">Telnet</a></li>
+<li><a href="#text">Text</a></li>
+<li><a href="#macro">Macro-commands</a></li>
+<li><a href="#prog">Programming</a></li>
+<li><a href="#gdb">GDB (Debugger)</a></li>
+<li><a href="#vc">Version Control</a></li>
+</ul></td><tr></table>
+
+<br>
+C = Control<br>
+M = Meta = Alt|Esc<br>
+<br>
+
+<a name="basics"></a>
+<h2>Basics</h2>
+<table>
+<tr><td><code>C-x C-f  </code></td><td>"find" file i.e. open/create a file in buffer</td></tr>
+<tr><td><code>C-x C-s  </code></td><td>save the file</td></tr>
+<tr><td><code>C-x C-w  </code></td><td>write the text to an alternate name</td></tr>
+<tr><td><code>C-x C-v  </code></td><td>find alternate file</td></tr>
+<tr><td><code>C-x i  </code></td><td>insert file at cursor position</td></tr>
+<tr><td><code>C-x b  </code></td><td>create/switch buffers</td></tr>
+<tr><td><code>C-x C-b  </code></td><td>show buffer list</td></tr>
+<tr><td><code>C-x k  </code></td><td>kill buffer</td></tr>
+<tr><td><code>C-z  </code></td><td>suspend emacs </td></tr>
+<tr><td><code>C-X C-c  </code></td><td>close down emacs</td></tr>
+</table>
+
+<a name="basicmov"></a>
+<h2>Basic movement</h2><table>
+<tr><td><code>C-f  </code></td><td>forward char</td></tr>
+<tr><td><code>C-b  </code></td><td>backward char</td></tr>
+<tr><td><code>C-p  </code></td><td>previous line</td></tr>
+<tr><td><code>C-n  </code></td><td>next line</td></tr>
+<tr><td><code>M-f  </code></td><td>forward one word</td></tr>
+<tr><td><code>M-b  </code></td><td>backward one word</td></tr>
+<tr><td><code>C-a  </code></td><td>beginning of line</td></tr>
+<tr><td><code>C-e  </code></td><td>end of line</td></tr>
+<tr><td><code>C-v  </code></td><td>one page up</td></tr>
+<tr><td><code>M-v  </code></td><td>scroll down one page</td></tr>
+<tr><td><code>M-<  </code></td><td>beginning of text</td></tr>
+<tr><td><code>M->  </code></td><td>end of text</td></tr>
+</table>
+
+<a name="editing"></a>
+<h2>Editing</h2>
+<table>
+<tr><td><code>M-n  </code></td><td>repeat the following command n times</td></tr>
+<tr><td><code>C-u  </code></td><td>repeat the following command 4 times</td></tr>
+<tr><td><code>C-u n  </code></td><td>repeat n times</td></tr>
+<tr><td><code>C-d  </code></td><td>delete a char</td></tr>
+<tr><td><code>M-d  </code></td><td>delete word</td></tr>
+<tr><td><code>M-Del  </code></td><td>delete word backwards</td></tr>
+<tr><td><code>C-k  </code></td><td>kill line</td></tr>
+<tr></tr>
+<tr><td><code>C-Space  </code></td><td>Set beginning mark (for region marking for example)</td></tr>
+<tr><td><code>C-W  </code></td><td>"kill" (delete) the marked region region</td></tr>
+<tr><td><code>M-W  </code></td><td>copy the marked region</td></tr>
+<tr><td><code>C-y  </code></td><td>"yank" (paste) the copied/killed region/line</td></tr>
+<tr><td><code>M-y  </code></td><td>yank earlier text (cycle through kill buffer)</td></tr>
+<tr><td><code>C-x C-x  </code></td><td>exchange cursor and mark</td></tr>
+<tr></tr>
+<tr><td><code>C-t  </code></td><td>transpose two chars</td></tr>
+<tr><td><code>M-t  </code></td><td>transpose two words</td></tr>
+<tr><td><code>C-x C-t  </code></td><td>transpose lines</td></tr>
+<tr><td><code>M-u  </code></td><td>make letters uppercase in word from cursor position to end</td></tr>
+<tr><td><code>M-c  </code></td><td>simply make first letter in word uppercase</td></tr>
+<tr><td><code>M-l  </code></td><td>opposite to M-u</td></tr>
+</table>
+
+<a name="important"></a>
+<h2>Important</h2>
+<table>
+<tr><td><code>C-g  </code></td><td>quit the running/entered command</td></tr>
+<tr><td><code>C-x u  </code></td><td>undo previous action</td></tr>
+<tr><td><code>M-x revert-buffer RETURN  </code></td><td>(insert like this) undo all changes since last save</td></tr>
+<tr><td><code>M-x recover-file RETURN  </code></td><td>Recover text from an autosave-file</td></tr>
+<tr><td><code>M-x recover-session RETURN  </code></td><td>if you edited several files</td></tr>
+</table>
+
+<a name="onlinehelp"></a>
+<h2>Online-Help</h2>
+<table>
+<tr><td><code>C-h c  </code></td><td>which command does this keystroke invoke</td></tr>
+<tr><td><code>C-h k  </code></td><td>which command does this keystroke invoke and what does it do?</td></tr>
+<tr><td><code>C-h l  </code></td><td>what were my last 100 typed keys</td></tr>
+<tr><td><code>C-h w  </code></td><td>what key-combo does this command have?</td></tr>
+<tr><td><code>C-h f  </code></td><td>what does this function do</td></tr>
+<tr><td><code>C-h v  </code></td><td>what's this variable and what is it's value</td></tr>
+<tr><td><code>C-h b  </code></td><td>show all keycommands for this buffer</td></tr>
+<tr><td><code>C-h t  </code></td><td>start the emacs tutorial</td></tr>
+<tr><td><code>C-h i  </code></td><td>start the info reader</td></tr>
+<tr><td><code>C-h C-k  </code></td><td>start up info reader and go to a certain key-combo point</td></tr>
+<tr><td><code>C-h F  </code></td><td>show the emacs FAQ</td></tr>
+<tr><td><code>C-h p  </code></td><td>show infos about the Elisp package on this machine</td></tr>
+</table>
+
+<a name="sr"></a>
+<h2>Search/Replace</h2>
+<table>
+<tr><td><code>C-s  </code></td><td>Search forward</td></tr>
+<tr><td><code>C-r  </code></td><td>search backward</td></tr>
+<tr><td><code>C-g  </code></td><td>return to where search started (if you are still in search mode)</td></tr>
+<tr><td><code>M-%  </code></td><td>query replace</td></tr>
+<blockquote><p><tr><td><code>    Space or y  </code></td><td>replace this occurence</td></tr>
+<tr><td><code>    Del or n  </code></td><td>don't replace</td></tr>
+<tr><td><code>    .  </code></td><td>only replace this and exit (replace)</td></tr>
+<tr><td><code>    ,  </code></td><td>replace and pause (resume with Space or y)</td></tr>
+<tr><td><code>    !  </code></td><td>replace all following occurences</td></tr>
+<tr><td><code>    ^  </code></td><td>back to previous match</td></tr>
+<tr><td><code>    RETURN or q  </code></td><td>quit replace</p></blockquote></td></tr>
+</table>
+
+<a name="srre"></a>
+<h2>Search/Replace with regular expressions</h2>
+<h3>Characters to use in regular expressions:</h3>
+<table>
+<tr><td><code>^  </code></td><td>beginning of line</td></tr>
+<tr><td><code>$  </code></td><td>end of line</td></tr>
+<tr><td><code>.  </code></td><td>single char</td></tr>
+<tr><td><code>.*  </code></td><td>group or null of chars</td></tr>
+<tr><td><code>\<  </code></td><td>beginning of a word</td></tr>
+<tr><td><code>\>  </code></td><td>end of a word</td></tr>
+<tr><td><code>[]  </code></td><td>every char inside the backets (for example [a-z] means every small letter)</td></tr>
+<tr></tr>
+<tr><td><code>M C-s RETURN  </code></td><td>search for regular expression forward</td></tr>
+<tr><td><code>M C-r RETURN  </code></td><td>search for regular expression backward</td></tr>
+<tr><td><code>M C-s  </code></td><td>incremental search</td></tr>
+<tr><td><code>C-s  </code></td><td>repeat incremental search</td></tr>
+<tr><td><code>M C-r  </code></td><td>incremental search backwards</td></tr>
+<tr><td><code>C-r  </code></td><td>repeat backwards</td></tr>
+<tr><td><code>M-x query-replace-regexp  </code></td><td>search and replace</td></tr>
+</table>
+
+<a name="wc"></a>
+<h2>Window-Commands</h2>
+<table>
+<tr><td><code>C-x 2  </code></td><td>split window vertically</td></tr>
+<tr><td><code>C-x o  </code></td><td>change to other window</td></tr>
+<tr><td><code>C-x 0  </code></td><td>delete window</td></tr>
+<tr><td><code>C-x 1  </code></td><td>close all windows except the one the cursors in</td></tr>
+<tr><td><code>C-x ^  </code></td><td>enlarge window</td></tr>
+<tr><td><code>M-x shrink-window  </code></td><td>command says it ;-)</td></tr>
+<tr><td><code>M C-v  </code></td><td>scroll other window</td></tr>
+<tr><td><code>C-x 4 f  </code></td><td>find file in other window</td></tr>
+<tr><td><code>C-x 4 o  </code></td><td>change to other window</td></tr>
+<tr><td><code>C-x 4 0  </code></td><td>kill buffer and window</td></tr>
+<tr><td><code>C-x 5 2  </code></td><td>make new frame</td></tr>
+<tr><td><code>C-x 5 f  </code></td><td>find file in other frame</td></tr>
+<tr><td><code>C-x 5 o  </code></td><td>change to other frame</td></tr>
+<tr><td><code>C-x 5 0  </code></td><td>close this frame</td></tr>
+</table>
+
+<a name="bc"></a>
+<h2>Bookmark commands</h2>
+<table>
+<tr><td><code>C-x r m  </code></td><td>set a bookmark at current cursor pos</td></tr>
+<tr><td><code>C-x r b  </code></td><td>jump to bookmark</td></tr>
+<tr><td><code>M-x bookmark-rename  </code></td><td>says it</td></tr>
+<tr><td><code>M-x bookmark-delete  </code></td><td>	"</td></tr>
+<tr><td><code>M-x bookmark-save</code></td><td> 	"</td></tr>
+<tr><td><code>C-x r l  </code></td><td>list bookmarks</td></tr>
+<blockquote><p><tr><td><code>    d  </code></td><td>mark bookmark for deletion</td></tr>
+<tr><td><code>    r  </code></td><td>rename bookmark</td></tr>
+<tr><td><code>    s  </code></td><td>save all listed bookmarks</td></tr>
+<tr><td><code>    f  </code></td><td>show bookmark the cursor is over</td></tr>
+<tr><td><code>    m  </code></td><td>mark bookmarks to be shown in multiple window</td></tr>
+<tr><td><code>    v  </code></td><td>show marked bookmarks (or the one the cursor is over)</td></tr>
+<tr><td><code>    t  </code></td><td>toggle listing of the corresponding paths</td></tr>
+<tr><td><code>    w  </code></td><td>	     	     " 	    		  path to this file</td></tr>
+<tr><td><code>    x  </code></td><td>delete marked bookmarks</td></tr>
+<tr><td><code>    Del  </code></td><td>     ?</td></tr>
+<tr><td><code>    q  </code></td><td>quit bookmark list</p></blockquote></td></tr>
+<tr><td><code>M-x bookmark-write  </code></td><td>write all bookmarks in given file</td></tr>
+<tr><td><code>M-x bookmark-load  </code></td><td>load bookmark from given file</td></tr>
+</table>
+
+<a name="shell"></a>
+<h2>Shell</h2>
+<table>
+<tr><td><code>M-x shell  </code></td><td>starts shell modus</td></tr>
+<tr><td><code>C-c C-c  </code></td><td>same as C-c under unix (stop running job)</td></tr>
+<tr><td><code>C-d  </code></td><td>delete char forward</td></tr>
+<tr><td><code>C-c C-d  </code></td><td>Send EOF</td></tr>
+<tr><td><code>C-c C-z  </code></td><td>suspend job (C-z under unix)</td></tr>
+<tr><td><code>M-p  </code></td><td>show previous commands</td></tr>
+</table>
+
+<a name="dired"></a>
+<h2>DIRectory EDitor (dired)</h2>
+<table>
+<tr><td><code>C-x d  </code></td><td>start up dired</td></tr>
+<tr><td><code>C  </code></td><td>(large C) copy </td></tr>
+<tr><td><code>d  </code></td><td>mark for erase</td></tr>
+<tr><td><code>D  </code></td><td>delete right away</td></tr>
+<tr><td><code>e or f  </code></td><td>open file or directory</td></tr>
+<tr><td><code>g  </code></td><td>reread directory structure from file</td></tr>
+<tr><td><code>G  </code></td><td>change group permissions (chgrp)</td></tr>
+<tr><td><code>k  </code></td><td>delete line from listing on screen (don't actually delete)</td></tr>
+<tr><td><code>m  </code></td><td>mark with *</td></tr>
+<tr><td><code>n  </code></td><td>move to next line</td></tr>
+<tr><td><code>o  </code></td><td>open file in other window and go there</td></tr>
+<tr><td><code>C-o  </code></td><td>open file in other window but don't change there</td></tr>
+<tr><td><code>P  </code></td><td>print file</td></tr>
+<tr><td><code>q  </code></td><td>quit dired</td></tr>
+<tr><td><code>Q  </code></td><td>do query-replace in marked files</td></tr>
+<tr><td><code>R  </code></td><td>rename file</td></tr>
+<tr><td><code>u  </code></td><td>remove mark</td></tr>
+<tr><td><code>v  </code></td><td>view file content</td></tr>
+<tr><td><code>x  </code></td><td>delete files marked with D</td></tr>
+<tr><td><code>z  </code></td><td>compress file</td></tr>
+<tr><td><code>M-Del  </code></td><td>remove all marks (whatever kind)</td></tr>
+<tr><td><code>~  </code></td><td>mark backup files (name~ files) for deletion</td></tr>
+<tr><td><code>#  </code></td><td>mark auto-save files (#name#) for deletion</td></tr>
+<tr><td><code>*/  </code></td><td>mark directory with * (C-u * removes that mark again)</td></tr>
+<tr><td><code>=  </code></td><td>compare this file with marked file</td></tr>
+<tr><td><code>M-=  </code></td><td>compare this file with it's backup file</td></tr>
+<tr><td><code>!  </code></td><td>apply shell command to this file</td></tr>
+<tr><td><code>M-}  </code></td><td>change to the next file marked with * od D</td></tr>
+<tr><td><code>M-{  </code></td><td>      "       previous     "</td></tr>
+<tr><td><code>% d  </code></td><td>mark files described through regular expression for deletion</td></tr>
+<tr><td><code>% m  </code></td><td>             "                                  (with *)</td></tr>
+<tr><td><code>+  </code></td><td>create directory</td></tr>
+<tr><td><code>>  </code></td><td>changed to next dir</td></tr>
+<tr><td><code><  </code></td><td>change to previous dir</td></tr>
+<tr><td><code>s  </code></td><td>toggle between sorting by name or date</td></tr>
+</table>
+
+<a name="maybe"></a>
+<h2>Maybe into this category also fits this command:</h2>
+<table>
+<tr><td><code>M-x speedbar  </code></td><td>starts up a separate window with a directory view</td></tr>
+</table>
+
+<a name="telnet"></a>
+<h2>Telnet</h2>
+<table>
+<tr><td><code>M-x telnet  </code></td><td>starts up telnet-modus</td></tr>
+<tr><td><code>C-d  </code></td><td>either delete char or send EOF</td></tr>
+<tr><td><code>C-c C-c  </code></td><td>stop running job (similar to C-c under unix)</td></tr>
+<tr><td><code>C-c C-d  </code></td><td>send EOF</td></tr>
+<tr><td><code>C-c C-o  </code></td><td>clear output of last command</td></tr>
+<tr><td><code>C-c C-z  </code></td><td>suspend execution of command</td></tr>
+<tr><td><code>C-c C-u  </code></td><td>kill line backwards</td></tr>
+<tr><td><code>M-p  </code></td><td>recall previous command</td></tr>
+</table>
+
+<a name="text"></a>
+<h2>Text</h2>
+<h3>Works only in text mode</h3>
+<table>
+<tr><td><code>M-s  </code></td><td>center line</td></tr>
+<tr><td><code>M-S  </code></td><td>center paragraph</td></tr>
+<tr><td><code>M-x center-region  </code></td><td>name says </td></tr>
+</table>
+
+<a name="macro"></a>
+<h2>Macro-commands</h2>
+<table>
+<tr><td><code>C-x (  </code></td><td>start macro definition</td></tr>
+<tr><td><code>C-x )  </code></td><td>end of macro definition</td></tr>
+<tr><td><code>C-x e  </code></td><td>execute last definied macro</td></tr>
+<tr><td><code>M-n C-x e  </code></td><td>execute last defined macro n times</td></tr>
+<tr><td><code>M-x name-last-kbd-macro  </code></td><td>give name to macro (for saving)</td></tr>
+<tr><td><code>M-x insert-keyboard-macro  </code></td><td>save named macro into file</td></tr>
+<tr><td><code>M-x load-file  </code></td><td>load macro</td></tr>
+<tr><td><code>M-x macroname  </code></td><td>execute macroname</td></tr>
+</table>
+
+<a name="prog"></a>
+<h2>Programming</h2>
+<table>
+<tr><td><code>M C-\  </code></td><td>indent region between cursor and mark</td></tr>
+<tr><td><code>M-m  </code></td><td>move to first (non-space) char in this line</td></tr>
+<tr><td><code>M-^  </code></td><td>attach this line to previous</td></tr>
+<tr><td><code>M-;  </code></td><td>formatize and indent comment</td></tr>
+     C, C++ and Java Modes</td></tr>
+<tr><td><code>M-a  </code></td><td>beginning of statement</td></tr>
+<tr><td><code>M-e  </code></td><td>end of statement</td></tr>
+<tr><td><code>M C-a  </code></td><td>beginning of function</td></tr>
+<tr><td><code>M C-e  </code></td><td>end of function</td></tr>
+<tr><td><code>C-c RETURN  </code></td><td>Set cursor to beginning of function and mark at the end</td></tr>
+<tr><td><code>C-c C-q  </code></td><td>indent the whole function according to indention style</td></tr>
+<tr><td><code>C-c C-a  </code></td><td>toggle modus in which after electric signs (like {}:';./*) emacs does the indention</td></tr>
+<tr><td><code>C-c C-d  </code></td><td>toggle auto hungry mode in which emacs deletes groups of spaces with one del-press</td></tr>
+<tr><td><code>C-c C-u  </code></td><td>go to beginning of this preprocessor statement</td></tr>
+<tr><td><code>C-c C-c  </code></td><td>comment out marked area</td></tr>
+     More general (I guess)</td></tr>
+<tr><td><code>M-x outline-minor-mode  </code></td><td>collapses function definitions in a
+file to a mere {...} </td></tr>
+<tr><td><code>M-x show-subtree  </code></td><td>If you are in one of the collapsed functions,
+this un-collapses it </td></tr>
+In order to achive some of the feats coming up now you have to run etags *.c
+*.h *.cpp (or what ever ending you source files have) in the source
+directory</td></tr>
+<tr><td><code>M-.  </code></td><td>(Thats Meta dot) If you are in a function call, this will
+take you to it's definition </td></tr>
+<tr><td><code>M-x tags-search ENTER  </code></td><td>Searches through all you etaged </td></tr>
+<tr><td><code>M-,  </code></td><td>(Meta comma) jumps to the next occurence for tags-search </td></tr>
+<tr><td><code>M-x tags-query-replace  </code></td><td>yum. This lets you replace some text in
+all the tagged files </td></tr>
+<tr><td><code>  </code></td><td> </td></tr>
+</table>
+
+<a name="gdb"></a>
+<h2>GDB (Debugger)</h2>
+<table>
+<tr><td><code>M-x gdb  </code></td><td>starts up gdm in an extra window</td></tr>
+</table>
+
+<a name="vc"></a>
+<h2>Version Control</h2>
+<table>
+<tr><td><code>C-x v d  </code></td><td>show all registered files in this dir</td></tr>
+<tr><td><code>C-x v =  </code></td><td>show diff between versions</td></tr>
+<tr><td><code>C-x v u  </code></td><td>remove all changes since last checkin</td></tr>
+<tr><td><code>C-x v ~  </code></td><td>show certain version in different window</td></tr>
+<tr><td><code>C-x v l  </code></td><td>print log</td></tr>
+<tr><td><code>C-x v i  </code></td><td>mark file for version control add</td></tr>
+<tr><td><code>C-x v h  </code></td><td>insert version control header into file</td></tr>
+<tr><td><code>C-x v r  </code></td><td>check out named snapshot</td></tr>
+<tr><td><code>C-x v s  </code></td><td>create named snapshot</td></tr>
+<tr><td><code>C-x v a  </code></td><td>create changelog file in gnu-style</td></tr>
+</table>
+{% endblock %}

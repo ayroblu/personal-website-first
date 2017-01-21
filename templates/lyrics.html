@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block script %}
+<script>
+function loadLyric() {
+    var xmlhttp;
+    var txt,x,i;
+    if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+    } else {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 && xmlhttp.status==200){
+            lyrics.innerHTML=xmlhttp.responseText;
+        }
+    }
+    xmlhttp.open("GET","/l?s="+sbox.value,true);
+    xmlhttp.send();
+}
+</script>
+{% endblock %}
+{% block container %}
+<br><h1>Search for Lyrics</h1>
+<p>Quick AJAX play thing with some random lyrics that were lying around</p>
+<input type="text" id="sbox" onkeydown="if(event.keyCode==13)loadLyric()"/>
+<pre id="lyrics"></pre>
+<p id="text">{{message}}</p>
+{% endblock %}

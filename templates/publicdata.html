@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block head %}
+<style>
+.pages td,.pages th{padding:1px 6px}
+.np td{width:5em}
+.np a{
+	display:block;
+	text-decoration:none;
+	background:#444;
+	text-align:center
+}
+.np a:hover{background:#222}
+</style>
+{% endblock %}
+
+{% block container %}
+<h1>PublicData Page</h1>
+{% if pages %}
+<table class="np"><td>{% if previous >= 0 %}<a href="/admin/publicdata?s={{previous}}">previous</a>{% endif %}</td><td>{% if next >= 0 %}<a href="/admin/publicdata?s={{next}}">next</a>{% endif %}</td></table>
+<table class="pages"><tr><th>Editor</th><th>View Page</th></tr>
+{% for page in pages %}<tr><td><a href="/admin/publicdata?e={{page.name}}">{{page.name}}</a></td><td><a href="/admin/publicdata?p={{page.name}}">{{page.name}}</a></td></tr>
+{% endfor %}</table>
+{% else %}
+<p>No logs found</p>
+{% endif %}
+<!--<p><a href="/admin?e=test">Edit Test</a>...<a href="/admin?p=test">Open Test</a></p>-->
+{% endblock %}

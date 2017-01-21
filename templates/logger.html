@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block head %}
+<style>.logs td{padding:1px 6px}
+.np td{width:5em}.np a{display:block;text-decoration:none;background:#444;text-align:center}.np a:hover{background:#222}</style>
+{% endblock %}
+
+{% block container %}
+<h1>Logger</h1>
+{% if logs %}
+<table class="np"><td>{% if previous >= 0 %}<a href="/logger?s={{previous}}">previous</a>{% endif %}</td><td>{% if next >= 0 %}<a href="/logger?s={{next}}">next</a>{% endif %}</td></table>
+<table class="logs"><tr><th>IP</th><th>Time</th><th>Message</th></tr>
+{% for log in logs %}<tr><td>{{log.ip}}</td><td>{{log.timedate}}</td><td>{{log.message}}</td></tr>
+{% endfor %}</table>
+{% else %}
+<p>No logs found</p>
+{% endif %}
+{% endblock %}
