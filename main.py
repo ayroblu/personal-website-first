@@ -107,6 +107,11 @@ class hug(MetaMain, webapp2.RequestHandler):
         general_total = general_counter.get_count(DEFAULT_COUNTER_NAME)
         self.render_response("hug.html", general_total=general_total)
 
+class details(MetaMain, webapp2.RequestHandler):
+    def get (self):
+        general_total = general_counter.get_count(DEFAULT_COUNTER_NAME)
+        self.render_response("details.html", general_total=general_total)
+
         
 class hack(MetaMain, webapp2.RequestHandler):
     def get (self):
@@ -266,6 +271,7 @@ class out(MetaMain, webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/home',home),
     ('/hug',hug),
+    ('/details',details),
     ('/hack',hack),
     ('/vi',vi),
     ('/vi2',vi2),

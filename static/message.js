@@ -1,13 +1,23 @@
 document.getElementsByTagName('body')[0].onclick = function() {
+    //clearTimeout(animation)
+    //if (runFancy) {
+    //    hack.style.width = '';
+    //    hack.setAttribute("style","width:");
+    //    hack.className = "text explode";
+    //    setTimeout('implode()',500);
+    //} else {
+    //    goHome();
+    //}
+    hack.className = "text type inter";
+    //animation = setTimeout('cssfadep2()',10);
     clearTimeout(animation)
-    if (runFancy) {
-        hack.style.width = '';
-        hack.setAttribute("style","width:");
-        hack.className = "text explode";
-        setTimeout('implode()',500);
-    } else {
-        goHome();
-    }
+    animation = setTimeout(function(){
+        hack.className = "text fade";
+        animation = setTimeout(function(){
+          window.location.href = "/details";
+        }, 2000)
+        //animation = setTimeout('animateText()', 2200);
+    },10);
 }
 window.onload = function() {
     hack.style.opacity = '';
@@ -22,9 +32,9 @@ var animation;
 function animateText() {
     if (index < messages.length) {
         hack.className = "text type";
-        hack.innerHTML = '<blinks>\u25AE</blinks>';
+        hack.innerHTML = '<blinks>\u2588</blinks>';
         var string = messages[index++];
-        hiddenhack.innerHTML = string.concat('\u25AE');
+        hiddenhack.innerHTML = string.concat('\u2588');
         hack.style.width = hiddenhack.offsetWidth+1;
         hack.setAttribute("style","width:"+(hiddenhack.offsetWidth+1)+"px");
         hiddenhack.innerHTML = '';
@@ -32,7 +42,7 @@ function animateText() {
     }
 }
 function type(string, i) {
-    var cursor = (++i == string.length) ? '<blinks>\u25AE</blinks>' : '\u25AE';
+    var cursor = (++i == string.length) ? '<blinks>\u2588</blinks>' : '\u2588';
     hack.innerHTML = string.substring(0,i).concat(cursor);
     if (i < string.length) {
         animation = setTimeout(''.concat("type(\"",string,"\",",i,")"), 100);
